@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entities\ReCapProjectEntities.csproj" />
     <ProjectReference Include="..\ReCapProjectDataAccsess\ReCapProjectDataAccsess.csproj" />
   </ItemGroup>
 

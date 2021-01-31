@@ -1,6 +1,6 @@
 ﻿using ReCapProjectBusiness.Concreate;
 using ReCapProjectDataAccsess.Concreate.InMemory;
-using ReCapProjectEntities.Concreate;
+using ReCapProjectEntities.ConCreate;
 using System;
 
 namespace ReCapProjectUI

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Entities\ReCapProjectEntities.csproj" />
+    <ProjectReference Include="..\ReCapProjectEntities\ReCapProjectEntities.csproj" />
   </ItemGroup>
 
 </Project>

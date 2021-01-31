@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCapProjectEntities", "Entities\ReCapProjectEntities.csproj", "{D80493E9-C135-4C45-86B4-E9228B4C693F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCapProjectDataAccsess", "ReCapProjectDataAccsess\ReCapProjectDataAccsess.csproj", "{51D6F8EC-A8F2-4FC4-9529-A92D6D98DE8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCapProjectBusiness", "ReCapBusiness\ReCapProjectBusiness.csproj", "{C951AB6F-B2A3-4413-B489-6D8F1710B1C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCapProjectUI", "ReCapProjectUI\ReCapProjectUI.csproj", "{6569061C-4A45-46D5-90FF-C73ADBB1915A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReCapProjectEntities", "ReCapProjectEntities\ReCapProjectEntities.csproj", "{65D5176F-E66A-4624-919C-00FA13EEF53D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D80493E9-C135-4C45-86B4-E9228B4C693F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D80493E9-C135-4C45-86B4-E9228B4C693F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D80493E9-C135-4C45-86B4-E9228B4C693F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D80493E9-C135-4C45-86B4-E9228B4C693F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{51D6F8EC-A8F2-4FC4-9529-A92D6D98DE8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{51D6F8EC-A8F2-4FC4-9529-A92D6D98DE8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51D6F8EC-A8F2-4FC4-9529-A92D6D98DE8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{6569061C-4A45-46D5-90FF-C73ADBB1915A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6569061C-4A45-46D5-90FF-C73ADBB1915A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6569061C-4A45-46D5-90FF-C73ADBB1915A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D5176F-E66A-4624-919C-00FA13EEF53D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D5176F-E66A-4624-919C-00FA13EEF53D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D5176F-E66A-4624-919C-00FA13EEF53D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D5176F-E66A-4624-919C-00FA13EEF53D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
