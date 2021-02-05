@@ -1,4 +1,5 @@
 ﻿using ReCapProjectBusiness.Concreate;
+using ReCapProjectDataAccsess.Concreate.EntityFramework;
 using ReCapProjectDataAccsess.Concreate.InMemory;
 using ReCapProjectEntities.ConCreate;
 using System;
@@ -9,31 +10,14 @@ namespace ReCapProjectUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new InMemoryCarDal());
+            CarManager carManager = new CarManager(new EfCarDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            ColorManager colorManager = new ColorManager(new EfColorDal());
 
-           
+            carManager.Add(new Car { BrandId=1,ColorId=1,DailyPrice=250,ModelYear=2014,Description="Klimalı,Dizel,Otomatik"});
+
+          
       
-            carManager.Add(new Car { Id = 4, BrandId = 4, ColorId = 2, DailyPrice = 150, ModelYear = 2008, Description = "Otomatik Vites" });
-            carManager.Update(new Car { Id = 1,Description="ARABA YOK" });
-            carManager.Delete(new Car { Id = 1 });
-
-
-
-   
-            Console.WriteLine("Markası 4 numaralı Id olan araçlar");
-            Console.WriteLine("--------------------------------------");
-            foreach (var brandId in carManager.GettByIdBrand(4) )
-            {
-                Console.WriteLine("Araç: " + brandId.Id + " "+ "Marka:"+" "+brandId.BrandId  + " - "+brandId.Description);
-            }
-            Console.WriteLine("===");
-
-            Console.WriteLine("Bütün araçlar");
-            Console.WriteLine("--------------------------------------");
-            foreach (var car in carManager.GettAll())
-            {
-                Console.WriteLine("Araç: " + car.Id+ "- "+car.Description);
-            }
         }
     }
 }

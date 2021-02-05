@@ -11,7 +11,10 @@ namespace ReCapProjectBusiness.Abstract
         void Add(Car car);
         void Update(Car car);
         void Delete(Car car);
-        List<Car> GettAll();
-        List<Car> GettByIdBrand(int brandId);
+        List<Car> GetAll();
+        List<Car> GetByBrandCar(int brandId);
+        List<Car> GetByColorCar(int colorId);
+        Car GetCar(int id);
+        
     }
 }

@@ -3,6 +3,7 @@ using ReCapProjectEntities.ConCreate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace ReCapProjectDataAccsess.Concreate.InMemory
@@ -30,10 +31,17 @@ namespace ReCapProjectDataAccsess.Concreate.InMemory
             _cars.Remove(deleteCar);
         }
 
-        public List<Car> GettAll()
+        public Car Get(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
         {
             return _cars;
         }
+
+
 
         public List<Car> GettByIdBrand(int brandId)
         {
