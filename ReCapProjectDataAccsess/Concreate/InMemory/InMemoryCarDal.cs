@@ -1,5 +1,6 @@
 ﻿using ReCapProjectDataAccsess.Abstract;
-using ReCapProjectEntities.ConCreate;
+using ReCapProjectEntities.Concreate;
+using ReCapProjectEntities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,10 @@ namespace ReCapProjectDataAccsess.Concreate.InMemory
             return _cars;
         }
 
-
+        public List<CarDetailDto> GetCarDetail()
+        {
+            throw new NotImplementedException();
+        }
 
         public List<Car> GettByIdBrand(int brandId)
         {

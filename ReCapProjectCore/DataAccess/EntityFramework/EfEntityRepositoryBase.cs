@@ -1,15 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ReCapProjectDataAccsess.Abstract;
-using ReCapProjectEntities.Abstract;
+using ReCapProjectCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace ReCapProjectDataAccsess.Concreate.EntityFramework
+namespace ReCapProjectCore.DataAccess.EntityFramework
 {
-    public class EfEntityRepository<T,TContext> : IEntityRepository<T> where T : class, IEntity, new() where TContext : DbContext,new()
+    public class EfEntityRepositoryBase<T, TContext> : IEntityRepository<T> where T : class, IEntity, new() where TContext : DbContext, new()
     {
         public void Add(T entity)
         {
@@ -35,10 +34,10 @@ namespace ReCapProjectDataAccsess.Concreate.EntityFramework
         {
             using (TContext context = new TContext())
             {
-                return  context.Set<T>().Where(filter).SingleOrDefault();
+                return context.Set<T>().Where(filter).SingleOrDefault();
             }
 
-            
+
         }
 
         public List<T> GetAll(Expression<Func<T, bool>> filter = null)
@@ -47,7 +46,7 @@ namespace ReCapProjectDataAccsess.Concreate.EntityFramework
             {
                 return filter == null ? context.Set<T>().ToList() : context.Set<T>().Where(filter).ToList();
             }
-           
+
         }
 
         public void Update(T entity)

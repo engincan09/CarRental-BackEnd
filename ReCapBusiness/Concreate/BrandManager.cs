@@ -1,6 +1,6 @@
 ﻿using ReCapProjectBusiness.Abstract;
 using ReCapProjectDataAccsess.Abstract;
-using ReCapProjectEntities.ConCreate;
+using ReCapProjectEntities.Concreate;
 using System;
 using System.Collections.Generic;
 using System.Text;

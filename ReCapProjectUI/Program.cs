@@ -1,7 +1,7 @@
 ﻿using ReCapProjectBusiness.Concreate;
 using ReCapProjectDataAccsess.Concreate.EntityFramework;
 using ReCapProjectDataAccsess.Concreate.InMemory;
-using ReCapProjectEntities.ConCreate;
+using ReCapProjectEntities.Concreate;
 using System;
 
 namespace ReCapProjectUI
@@ -14,7 +14,10 @@ namespace ReCapProjectUI
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            carManager.Add(new Car { BrandId=1,ColorId=1,DailyPrice=250,ModelYear=2014,Description="Klimalı,Dizel,Otomatik"});
+            foreach (var car in carManager.GetCarDetail())
+            {
+                Console.WriteLine(car.Description + " - " + car.BrandName + " - " + car.ColorName + " - " + car.DailyPrice + " - " + car.ModelYear);
+            }
 
           
       

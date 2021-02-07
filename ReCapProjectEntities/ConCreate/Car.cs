@@ -1,9 +1,10 @@
-﻿using ReCapProjectEntities.Abstract;
+﻿
+using ReCapProjectCore.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ReCapProjectEntities.ConCreate
+namespace ReCapProjectEntities.Concreate
 { 
     public class Car : IEntity
     {
