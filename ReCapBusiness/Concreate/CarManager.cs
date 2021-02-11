@@ -1,4 +1,7 @@
 ﻿using ReCapProjectBusiness.Abstract;
+using ReCapProjectBusiness.Constants;
+using ReCapProjectCore.Utilities.Results.Abstract;
+using ReCapProjectCore.Utilities.Results.Concreate;
 using ReCapProjectDataAccsess.Abstract;
 using ReCapProjectEntities.Concreate;
 using ReCapProjectEntities.DTOs;
@@ -16,52 +19,108 @@ namespace ReCapProjectBusiness.Concreate
             _car = car;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             if (car.Description.Length >=2 && car.DailyPrice >0)
             {
                 _car.Add(car);
-                Console.WriteLine("Araç Ekleme İşlemi Başarılı!");
+                return new SuccessResult(Messages.AddedMessage);
             }
             else
             {
-                Console.WriteLine("Araba eklenemedi. Fiyat 0 TL'den küçük olamaz veya açıklama en az 2 karakter olmalıdır. ");
+                return new ErrorResult(Messages.AddedErrorMessage);
             }
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
-            _car.Delete(car);
+            try
+            {
+                _car.Delete(car);
+                return new SuccessResult(Messages.DeletedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorResult(Messages.DeletedErrorMessage);
+            }
+          
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _car.GetAll();
+            try
+            {
+                return new SuccessDataResult<List<Car>>(_car.GetAll(), Messages.ListedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.ListedErrorMessage);
+            }
+            
         }
 
-        public List<Car> GetByBrandCar(int brandId)
+        public IDataResult<List<Car>> GetByBrandCar(int brandId)
         {
-            return _car.GetAll(p=> p.BrandId == brandId);
+            try
+            {
+                return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.BrandId == brandId), Messages.ListedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.ListedErrorMessage);
+
+            }
+            
         }
 
-        public List<Car> GetByColorCar(int colorId)
+        public IDataResult<List<Car>> GetByColorCar(int colorId)
         {
-            return _car.GetAll(p=> p.ColorId == colorId);
+            try
+            {
+                return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.ColorId == colorId), Messages.ListedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.ListedErrorMessage);
+            }
         }
 
-        public Car GetCar(int id)
+        public IDataResult<Car> GetCar(int id)
         {
-            return _car.Get(p => p.Id == id);
+            try
+            {
+                return new SuccessDataResult<Car>(_car.Get(p => p.Id == id));
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<Car>(Messages.ListedErrorMessage);
+            }
         }
 
-        public List<CarDetailDto> GetCarDetail()
+        public IDataResult<List<CarDetailDto>> GetCarDetail()
         {
-            return _car.GetCarDetail();
+            try
+            {
+                return new SuccessDataResult<List<CarDetailDto>>(_car.GetCarDetail());
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<List<CarDetailDto>>(Messages.ListedErrorMessage);
+            }
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
-            _car.Update(car);
+            try
+            {
+                _car.Update(car);
+                return new SuccessResult(Messages.UpdatedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorResult(Messages.UpdatedErrorMessage);
+            }
+          
         }
     }
 }

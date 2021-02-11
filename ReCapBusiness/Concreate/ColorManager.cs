@@ -1,4 +1,7 @@
 ﻿using ReCapProjectBusiness.Abstract;
+using ReCapProjectBusiness.Constants;
+using ReCapProjectCore.Utilities.Results.Abstract;
+using ReCapProjectCore.Utilities.Results.Concreate;
 using ReCapProjectDataAccsess.Abstract;
 using ReCapProjectEntities.Concreate;
 using System;
@@ -16,30 +19,67 @@ namespace ReCapProjectBusiness.Concreate
             _color = color;
         }
 
-        public void Add(Color color)
+        public IResult Add(Color color)
         {
-            _color.Add(color);
-            Console.WriteLine("Renk Bilgisi Eklendi");
+            try
+            {
+                _color.Add(color);
+                return new SuccessResult(Messages.AddedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorResult(Messages.AddedErrorMessage);
+            }
         }
 
-        public void Delete(Color color)
+        public IResult Delete(Color color)
         {
-            _color.Delete(color);
+            try
+            {
+                _color.Delete(color);
+                return new SuccessResult(Messages.DeletedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorResult(Messages.DeletedErrorMessage);
+            }
         }
 
-        public List<Color> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
-            return _color.GetAll();
+            try
+            {
+                return new SuccessDataResult<List<Color>>(_color.GetAll(),Messages.ListedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<List<Color>>(Messages.ListedErrorMessage);
+            }
         }
 
-        public Color GetColor(int id)
+        public IDataResult<Color> GetColor(int id)
         {
-            return _color.Get(p => p.Id == id);
+            try
+            {
+                return new SuccessDataResult<Color>(_color.Get(p=> p.Id == id));
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<Color>();
+            }
         }
 
-        public void Update(Color color)
+        public IResult Update(Color color)
         {
-            _color.Update(color);
+            try
+            {
+                _color.Update(color);
+                return new SuccessResult(Messages.UpdatedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorResult(Messages.UpdatedErrorMessage);
+            }
         }
     }
 }

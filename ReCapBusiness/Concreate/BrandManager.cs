@@ -1,4 +1,7 @@
 ﻿using ReCapProjectBusiness.Abstract;
+using ReCapProjectBusiness.Constants;
+using ReCapProjectCore.Utilities.Results.Abstract;
+using ReCapProjectCore.Utilities.Results.Concreate;
 using ReCapProjectDataAccsess.Abstract;
 using ReCapProjectEntities.Concreate;
 using System;
@@ -16,29 +19,67 @@ namespace ReCapProjectBusiness.Concreate
             _brand = brand;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
-            _brand.Add(brand);
+            try
+            {
+                _brand.Add(brand);
+                return new SuccessResult(Messages.AddedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorResult(Messages.AddedErrorMessage);
+            }
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
-            _brand.Delete(brand);
+            try
+            {
+                _brand.Delete(brand);
+                return new SuccessResult(Messages.DeletedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorResult(Messages.DeletedErrorMessage);
+            }
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brand.GetAll();
+            try
+            {
+                return new SuccessDataResult<List<Brand>>(_brand.GetAll(),Messages.ListedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<List<Brand>>(Messages.ListedErrorMessage);
+            }
         }
 
-        public Brand GetBrand(int id)
+        public IDataResult<Brand> GetBrand(int id)
         {
-            return _brand.Get(p => p.Id == id);
+            try
+            {
+                return new SuccessDataResult<Brand>(_brand.Get(m => m.Id == id));
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<Brand>(Messages.ListedErrorMessage);
+            }
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
-            _brand.Update(brand);
+            try
+            {
+                _brand.Update(brand);
+                return new SuccessResult(Messages.UpdatedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorResult(Messages.UpdatedErrorMessage);
+            }
         }
     }
 }

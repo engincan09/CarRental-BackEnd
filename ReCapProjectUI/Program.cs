@@ -13,14 +13,27 @@ namespace ReCapProjectUI
             CarManager carManager = new CarManager(new EfCarDal());
             BrandManager brandManager = new BrandManager(new EfBrandDal());
             ColorManager colorManager = new ColorManager(new EfColorDal());
+    
 
-            foreach (var car in carManager.GetCarDetail())
+            var result = carManager.GetAll();
+            if (result.Success == true)
             {
-                Console.WriteLine(car.Description + " - " + car.BrandName + " - " + car.ColorName + " - " + car.DailyPrice + " - " + car.ModelYear);
+                foreach (var car in carManager.GetAll().Data)
+                {
+                    Console.WriteLine(car.Description + " - " + car.DailyPrice + " - " + car.ModelYear);
+                }
+                Console.WriteLine(result.Messages);
             }
+            else
+            {
+                Console.WriteLine(result.Messages);
+            }
+            
 
-          
-      
+
+
+
+
         }
     }
 }

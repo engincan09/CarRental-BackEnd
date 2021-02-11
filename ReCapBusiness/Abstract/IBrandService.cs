@@ -1,4 +1,5 @@
-﻿using ReCapProjectEntities.Concreate;
+﻿using ReCapProjectCore.Utilities.Results.Abstract;
+using ReCapProjectEntities.Concreate;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,10 +8,10 @@ namespace ReCapProjectBusiness.Abstract
 {
     public interface IBrandService
     {
-        void Add(Brand brand);
-        void Update(Brand brand);
-        void Delete(Brand brand);
-        List<Brand> GetAll();
-        Brand GetBrand(int id);
+        IResult Add(Brand brand);
+        IResult Update(Brand brand);
+        IResult Delete(Brand brand);
+        IDataResult<List<Brand>> GetAll();
+        IDataResult<Brand> GetBrand(int id);
     }
 }
