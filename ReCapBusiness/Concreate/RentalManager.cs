@@ -10,33 +10,34 @@ using System.Text;
 
 namespace ReCapProjectBusiness.Concreate
 {
-    public class ColorManager : IColorService
+    public class RentalManager : IRentalService
     {
-        private readonly IColorDal _color;
+        IRentalDal _rental;
 
-        public ColorManager(IColorDal color)
+        public RentalManager(IRentalDal rental)
         {
-            _color = color;
+            _rental = rental;
         }
 
-        public IResult Add(Color color)
+        public IResult Add(Rental rental)
+        {
+            var rentalList = _rental.GetAll(m => m.CarId == rental.CarId);
+            foreach (var car in rentalList)
+            {
+                if (car.ReturnDate == null)
+                {
+                    return new ErrorResult(Messages.RentalError);
+                }
+            }
+            _rental.Add(rental);
+            return new SuccessResult(Messages.Rental);
+        }
+
+        public IResult Delete(Rental rental)
         {
             try
             {
-                _color.Add(color);
-                return new SuccessResult(Messages.AddedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.AddedErrorMessage);
-            }
-        }
-
-        public IResult Delete(Color color)
-        {
-            try
-            {
-                _color.Delete(color);
+                _rental.Delete(rental);
                 return new SuccessResult(Messages.DeletedMessage);
             }
             catch (Exception)
@@ -45,35 +46,35 @@ namespace ReCapProjectBusiness.Concreate
             }
         }
 
-        public IDataResult<List<Color>> GetAll()
+        public IDataResult<Rental> Get(int rentalId)
         {
             try
             {
-                return new SuccessDataResult<List<Color>>(_color.GetAll(),Messages.ListedMessage);
+                return new SuccessDataResult<Rental>(_rental.Get(m=> m.Id == rentalId));
             }
             catch (Exception)
             {
-                return new ErrorDataResult<List<Color>>(Messages.ListedErrorMessage);
+                return new ErrorDataResult<Rental>(Messages.ListedErrorMessage);
             }
         }
 
-        public IDataResult<Color> GetColor(int id)
+        public IDataResult<List<Rental>> GetAll()
         {
             try
             {
-                return new SuccessDataResult<Color>(_color.Get(p=> p.Id == id));
+                return new SuccessDataResult<List<Rental>>(_rental.GetAll());
             }
             catch (Exception)
             {
-                return new ErrorDataResult<Color>();
+                return new ErrorDataResult<List<Rental>>(Messages.ListedErrorMessage);
             }
         }
 
-        public IResult Update(Color color)
+        public IResult Update(Rental rental)
         {
             try
             {
-                _color.Update(color);
+                _rental.Update(rental);
                 return new SuccessResult(Messages.UpdatedMessage);
             }
             catch (Exception)

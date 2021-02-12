@@ -10,28 +10,18 @@ namespace ReCapProjectUI
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EfCarDal());
-            BrandManager brandManager = new BrandManager(new EfBrandDal());
-            ColorManager colorManager = new ColorManager(new EfColorDal());
-    
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
 
-            var result = carManager.GetAll();
+            var result = rentalManager.Add(new Rental {CarId=2,CustomerId=1,RentDate=DateTime.Now.Date});
+
             if (result.Success == true)
             {
-                foreach (var car in carManager.GetAll().Data)
-                {
-                    Console.WriteLine(car.Description + " - " + car.DailyPrice + " - " + car.ModelYear);
-                }
                 Console.WriteLine(result.Messages);
             }
             else
             {
                 Console.WriteLine(result.Messages);
             }
-            
-
-
-
 
 
         }

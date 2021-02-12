@@ -10,20 +10,20 @@ using System.Text;
 
 namespace ReCapProjectBusiness.Concreate
 {
-    public class ColorManager : IColorService
+    public class UserManager : IUserService
     {
-        private readonly IColorDal _color;
+        private readonly IUserDal _user;
 
-        public ColorManager(IColorDal color)
+        public UserManager(IUserDal user)
         {
-            _color = color;
+            _user = user;
         }
 
-        public IResult Add(Color color)
+        public IResult Add(User user)
         {
             try
             {
-                _color.Add(color);
+                _user.Add(user);
                 return new SuccessResult(Messages.AddedMessage);
             }
             catch (Exception)
@@ -32,11 +32,11 @@ namespace ReCapProjectBusiness.Concreate
             }
         }
 
-        public IResult Delete(Color color)
+        public IResult Delete(User user)
         {
             try
             {
-                _color.Delete(color);
+                _user.Delete(user);
                 return new SuccessResult(Messages.DeletedMessage);
             }
             catch (Exception)
@@ -45,39 +45,39 @@ namespace ReCapProjectBusiness.Concreate
             }
         }
 
-        public IDataResult<List<Color>> GetAll()
+        public IDataResult<User> Get(int userId)
         {
             try
-            {
-                return new SuccessDataResult<List<Color>>(_color.GetAll(),Messages.ListedMessage);
+            { 
+                return new SuccessDataResult<User>(_user.Get(p=> p.Id == userId));
             }
             catch (Exception)
             {
-                return new ErrorDataResult<List<Color>>(Messages.ListedErrorMessage);
+                return new ErrorDataResult<User>(Messages.ListedErrorMessage);
             }
         }
 
-        public IDataResult<Color> GetColor(int id)
+        public IDataResult<List<User>> GetAll()
         {
             try
             {
-                return new SuccessDataResult<Color>(_color.Get(p=> p.Id == id));
+                return new SuccessDataResult<List<User>>(_user.GetAll(),Messages.ListedMessage);
             }
             catch (Exception)
             {
-                return new ErrorDataResult<Color>();
+                return new ErrorDataResult<List<User>>(Messages.ListedErrorMessage);
             }
         }
 
-        public IResult Update(Color color)
+        public IResult Update(User user)
         {
             try
             {
-                _color.Update(color);
+                _user.Update(user);
                 return new SuccessResult(Messages.UpdatedMessage);
             }
             catch (Exception)
-            {
+            {           
                 return new ErrorResult(Messages.UpdatedErrorMessage);
             }
         }

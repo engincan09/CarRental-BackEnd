@@ -17,5 +17,8 @@ namespace ReCapProjectBusiness.Constants
 
         public static string ListedMessage = "Listeleme Başarılı!";
         public static string ListedErrorMessage = "Listeleme Yapılırken Bir Sorun Oluştur!";
+
+        public static string Rental = "Araç Kiralandı!";
+        public static string RentalError = "Araç bir başka müşteride!";
     }
 }

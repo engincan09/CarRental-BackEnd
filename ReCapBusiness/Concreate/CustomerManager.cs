@@ -10,20 +10,20 @@ using System.Text;
 
 namespace ReCapProjectBusiness.Concreate
 {
-    public class ColorManager : IColorService
+    public class CustomerManager : ICustomerService
     {
-        private readonly IColorDal _color;
+        private readonly ICustomerDal _customer;
 
-        public ColorManager(IColorDal color)
+        public CustomerManager(ICustomerDal customer)
         {
-            _color = color;
+            _customer = customer;
         }
 
-        public IResult Add(Color color)
+        public IResult Add(Customer customer)
         {
             try
             {
-                _color.Add(color);
+                _customer.Add(customer);
                 return new SuccessResult(Messages.AddedMessage);
             }
             catch (Exception)
@@ -32,11 +32,11 @@ namespace ReCapProjectBusiness.Concreate
             }
         }
 
-        public IResult Delete(Color color)
+        public IResult Delete(Customer customer)
         {
             try
             {
-                _color.Delete(color);
+                _customer.Delete(customer);
                 return new SuccessResult(Messages.DeletedMessage);
             }
             catch (Exception)
@@ -45,35 +45,35 @@ namespace ReCapProjectBusiness.Concreate
             }
         }
 
-        public IDataResult<List<Color>> GetAll()
+        public IDataResult<Customer> Get(int customerId)
         {
             try
             {
-                return new SuccessDataResult<List<Color>>(_color.GetAll(),Messages.ListedMessage);
+                return new SuccessDataResult<Customer>(_customer.Get(m => m.Id == customerId));
             }
             catch (Exception)
             {
-                return new ErrorDataResult<List<Color>>(Messages.ListedErrorMessage);
+                return new ErrorDataResult<Customer>(Messages.ListedErrorMessage);
             }
         }
 
-        public IDataResult<Color> GetColor(int id)
+        public IDataResult<List<Customer>> GetAll()
         {
             try
             {
-                return new SuccessDataResult<Color>(_color.Get(p=> p.Id == id));
+                return new SuccessDataResult<List<Customer>>(_customer.GetAll(),Messages.ListedMessage);
             }
             catch (Exception)
             {
-                return new ErrorDataResult<Color>();
+                return new ErrorDataResult<List<Customer>>(Messages.ListedErrorMessage);
             }
         }
 
-        public IResult Update(Color color)
+        public IResult Update(Customer customer)
         {
             try
             {
-                _color.Update(color);
+                _customer.Update(customer);
                 return new SuccessResult(Messages.UpdatedMessage);
             }
             catch (Exception)
