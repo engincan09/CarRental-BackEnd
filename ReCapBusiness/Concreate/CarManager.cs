@@ -77,7 +77,20 @@ namespace ReCapProjectBusiness.Concreate
         {
             try
             {
+                
                 return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.ColorId == colorId), Messages.ListedMessage);
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.ListedErrorMessage);
+            }
+        }
+
+        public IDataResult<List<Car>> GetByDesc(string desc)
+        {
+            try
+            {
+                return new SuccessDataResult<List<Car>>(_car.GetAll(p=> p.Description.ToLower().Contains(desc.ToLower())));
             }
             catch (Exception)
             {

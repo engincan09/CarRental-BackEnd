@@ -12,5 +12,6 @@ namespace ReCapProjectDataAccsess.Abstract
     public interface ICarDal : IEntityRepository<Car>
     {
         List<CarDetailDto> GetCarDetail();
+       
     }
 }
