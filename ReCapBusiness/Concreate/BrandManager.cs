@@ -21,65 +21,31 @@ namespace ReCapProjectBusiness.Concreate
 
         public IResult Add(Brand brand)
         {
-            try
-            {
-                _brand.Add(brand);
-                return new SuccessResult(Messages.AddedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.AddedErrorMessage);
-            }
+            _brand.Add(brand);
+            return new SuccessResult(Messages.AddedMessage);
+
         }
 
         public IResult Delete(Brand brand)
         {
-            try
-            {
-                _brand.Delete(brand);
-                return new SuccessResult(Messages.DeletedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.DeletedErrorMessage);
-            }
+            _brand.Delete(brand);
+            return new SuccessResult(Messages.DeletedMessage);
         }
 
         public IDataResult<List<Brand>> GetAll()
         {
-            try
-            {
-                return new SuccessDataResult<List<Brand>>(_brand.GetAll(),Messages.ListedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<Brand>>(Messages.ListedErrorMessage);
-            }
+            return new SuccessDataResult<List<Brand>>(_brand.GetAll(), Messages.ListedMessage);
         }
 
         public IDataResult<Brand> GetBrand(int id)
         {
-            try
-            {
-                return new SuccessDataResult<Brand>(_brand.Get(m => m.Id == id));
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<Brand>(Messages.ListedErrorMessage);
-            }
+            return new SuccessDataResult<Brand>(_brand.Get(m => m.Id == id));
         }
 
         public IResult Update(Brand brand)
         {
-            try
-            {
-                _brand.Update(brand);
-                return new SuccessResult(Messages.UpdatedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.UpdatedErrorMessage);
-            }
+            _brand.Update(brand);
+            return new SuccessResult(Messages.UpdatedMessage);
         }
     }
 }

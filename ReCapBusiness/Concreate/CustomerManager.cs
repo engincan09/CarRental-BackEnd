@@ -21,65 +21,30 @@ namespace ReCapProjectBusiness.Concreate
 
         public IResult Add(Customer customer)
         {
-            try
-            {
-                _customer.Add(customer);
-                return new SuccessResult(Messages.AddedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.AddedErrorMessage);
-            }
+            _customer.Add(customer);
+            return new SuccessResult(Messages.AddedMessage);
         }
 
         public IResult Delete(Customer customer)
         {
-            try
-            {
-                _customer.Delete(customer);
-                return new SuccessResult(Messages.DeletedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.DeletedErrorMessage);
-            }
+            _customer.Delete(customer);
+            return new SuccessResult(Messages.DeletedMessage);
         }
 
         public IDataResult<Customer> Get(int customerId)
         {
-            try
-            {
-                return new SuccessDataResult<Customer>(_customer.Get(m => m.Id == customerId));
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<Customer>(Messages.ListedErrorMessage);
-            }
+            return new SuccessDataResult<Customer>(_customer.Get(m => m.Id == customerId));
         }
 
         public IDataResult<List<Customer>> GetAll()
         {
-            try
-            {
-                return new SuccessDataResult<List<Customer>>(_customer.GetAll(),Messages.ListedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<Customer>>(Messages.ListedErrorMessage);
-            }
+            return new SuccessDataResult<List<Customer>>(_customer.GetAll(), Messages.ListedMessage);
         }
 
         public IResult Update(Customer customer)
         {
-            try
-            {
-                _customer.Update(customer);
-                return new SuccessResult(Messages.UpdatedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.UpdatedErrorMessage);
-            }
+            _customer.Update(customer);
+            return new SuccessResult(Messages.UpdatedMessage);
         }
     }
 }

@@ -21,93 +21,40 @@ namespace ReCapProjectBusiness.Concreate
 
         public IResult Add(Car car)
         {
-            if (car.Description.Length >=2 && car.DailyPrice >0)
-            {
-                _car.Add(car);
-                return new SuccessResult(Messages.AddedMessage);
-            }
-            else
-            {
-                return new ErrorResult(Messages.AddedErrorMessage);
-            }
+            _car.Add(car);
+            return new SuccessResult(Messages.AddedMessage);
         }
 
         public IResult Delete(Car car)
         {
-            try
-            {
-                _car.Delete(car);
-                return new SuccessResult(Messages.DeletedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.DeletedErrorMessage);
-            }
-          
+            _car.Delete(car);
+            return new SuccessResult(Messages.DeletedMessage);
         }
 
         public IDataResult<List<Car>> GetAll()
         {
-            try
-            {
-                return new SuccessDataResult<List<Car>>(_car.GetAll(), Messages.ListedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.ListedErrorMessage);
-            }
-            
+            return new SuccessDataResult<List<Car>>(_car.GetAll(), Messages.ListedMessage);
         }
 
         public IDataResult<List<Car>> GetByBrandCar(int brandId)
         {
-            try
-            {
-                return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.BrandId == brandId), Messages.ListedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.ListedErrorMessage);
-
-            }
-            
+            return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.BrandId == brandId), Messages.ListedMessage);
         }
 
         public IDataResult<List<Car>> GetByColorCar(int colorId)
         {
-            try
-            {
-                
-                return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.ColorId == colorId), Messages.ListedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.ListedErrorMessage);
-            }
+
+            return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.ColorId == colorId), Messages.ListedMessage);
         }
 
         public IDataResult<List<Car>> GetByDesc(string desc)
         {
-            try
-            {
-                return new SuccessDataResult<List<Car>>(_car.GetAll(p=> p.Description.ToLower().Contains(desc.ToLower())));
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<Car>>(Messages.ListedErrorMessage);
-            }
+            return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.Description.ToLower().Contains(desc.ToLower())));
         }
 
         public IDataResult<Car> GetCar(int id)
         {
-            try
-            {
-                return new SuccessDataResult<Car>(_car.Get(p => p.Id == id));
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<Car>(Messages.ListedErrorMessage);
-            }
+            return new SuccessDataResult<Car>(_car.Get(p => p.Id == id));
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetail()
@@ -124,16 +71,8 @@ namespace ReCapProjectBusiness.Concreate
 
         public IResult Update(Car car)
         {
-            try
-            {
-                _car.Update(car);
-                return new SuccessResult(Messages.UpdatedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.UpdatedErrorMessage);
-            }
-          
+            _car.Update(car);
+            return new SuccessResult(Messages.UpdatedMessage);
         }
     }
 }

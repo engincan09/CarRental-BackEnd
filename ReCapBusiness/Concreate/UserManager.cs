@@ -21,65 +21,30 @@ namespace ReCapProjectBusiness.Concreate
 
         public IResult Add(User user)
         {
-            try
-            {
-                _user.Add(user);
-                return new SuccessResult(Messages.AddedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.AddedErrorMessage);
-            }
+            _user.Add(user);
+            return new SuccessResult(Messages.AddedMessage);
         }
 
         public IResult Delete(User user)
         {
-            try
-            {
-                _user.Delete(user);
-                return new SuccessResult(Messages.DeletedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.DeletedErrorMessage);
-            }
+            _user.Delete(user);
+            return new SuccessResult(Messages.DeletedMessage);
         }
 
         public IDataResult<User> Get(int userId)
         {
-            try
-            { 
-                return new SuccessDataResult<User>(_user.Get(p=> p.Id == userId));
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<User>(Messages.ListedErrorMessage);
-            }
+            return new SuccessDataResult<User>(_user.Get(p => p.Id == userId));
         }
 
         public IDataResult<List<User>> GetAll()
         {
-            try
-            {
-                return new SuccessDataResult<List<User>>(_user.GetAll(),Messages.ListedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<User>>(Messages.ListedErrorMessage);
-            }
+            return new SuccessDataResult<List<User>>(_user.GetAll(), Messages.ListedMessage);
         }
 
         public IResult Update(User user)
         {
-            try
-            {
-                _user.Update(user);
-                return new SuccessResult(Messages.UpdatedMessage);
-            }
-            catch (Exception)
-            {           
-                return new ErrorResult(Messages.UpdatedErrorMessage);
-            }
+            _user.Update(user);
+            return new SuccessResult(Messages.UpdatedMessage);
         }
     }
 }

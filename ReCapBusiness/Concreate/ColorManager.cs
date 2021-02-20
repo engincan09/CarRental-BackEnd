@@ -21,65 +21,30 @@ namespace ReCapProjectBusiness.Concreate
 
         public IResult Add(Color color)
         {
-            try
-            {
-                _color.Add(color);
-                return new SuccessResult(Messages.AddedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.AddedErrorMessage);
-            }
+            _color.Add(color);
+            return new SuccessResult(Messages.AddedMessage);
         }
 
         public IResult Delete(Color color)
         {
-            try
-            {
-                _color.Delete(color);
-                return new SuccessResult(Messages.DeletedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.DeletedErrorMessage);
-            }
+            _color.Delete(color);
+            return new SuccessResult(Messages.DeletedMessage);
         }
 
         public IDataResult<List<Color>> GetAll()
         {
-            try
-            {
-                return new SuccessDataResult<List<Color>>(_color.GetAll(),Messages.ListedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<List<Color>>(Messages.ListedErrorMessage);
-            }
+            return new SuccessDataResult<List<Color>>(_color.GetAll(), Messages.ListedMessage);
         }
 
         public IDataResult<Color> GetColor(int id)
         {
-            try
-            {
-                return new SuccessDataResult<Color>(_color.Get(p=> p.Id == id));
-            }
-            catch (Exception)
-            {
-                return new ErrorDataResult<Color>();
-            }
+            return new SuccessDataResult<Color>(_color.Get(p => p.Id == id));
         }
 
         public IResult Update(Color color)
         {
-            try
-            {
-                _color.Update(color);
-                return new SuccessResult(Messages.UpdatedMessage);
-            }
-            catch (Exception)
-            {
-                return new ErrorResult(Messages.UpdatedErrorMessage);
-            }
+            _color.Update(color);
+            return new SuccessResult(Messages.UpdatedMessage);
         }
     }
 }
