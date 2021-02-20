@@ -1,5 +1,7 @@
 ﻿using ReCapProjectBusiness.Abstract;
 using ReCapProjectBusiness.Constants;
+using ReCapProjectBusiness.ValidationRules.FluentValidation;
+using ReCapProjectCore.Aspects.Autofac.Validation;
 using ReCapProjectCore.Utilities.Results.Abstract;
 using ReCapProjectCore.Utilities.Results.Concreate;
 using ReCapProjectDataAccsess.Abstract;
@@ -19,6 +21,7 @@ namespace ReCapProjectBusiness.Concreate
             _brand = brand;
         }
 
+        [ValidationAspect(typeof(BrandValidator))]
         public IResult Add(Brand brand)
         {
             _brand.Add(brand);
