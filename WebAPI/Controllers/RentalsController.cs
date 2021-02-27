@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReCapProjectBusiness.Abstract;
-using ReCapProjectEntities.Concreate;
+using ReCapProjectEntities.Concrete;
 
 namespace WebAPI.Controllers
 {
@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class RentalsController : ControllerBase
     {
-        IRentalService _rentalService;
+       private readonly IRentalService _rentalService;
 
         public RentalsController(IRentalService rentalService)
         {
@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
         }
 
         //Add
-        [HttpGet("add")]
+        [HttpPost("add")]
         public IActionResult Add(Rental rental)
         {
             var result = _rentalService.Add(rental);
@@ -57,7 +57,7 @@ namespace WebAPI.Controllers
         }
 
         //Delete
-        [HttpGet("delete")]
+        [HttpPost("delete")]
         public IActionResult Delete(Rental rental)
         {
             var result = _rentalService.Delete(rental);
@@ -69,7 +69,7 @@ namespace WebAPI.Controllers
         }
 
         //Update
-        [HttpGet("update")]
+        [HttpPost("update")]
         public IActionResult Update(Rental rental)
         {
             var result = _rentalService.Update(rental);

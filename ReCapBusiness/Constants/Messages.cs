@@ -20,5 +20,16 @@ namespace ReCapProjectBusiness.Constants
 
         public static string Rental = "Araç Kiralandı!";
         public static string RentalError = "Araç bir başka müşteride!";
+
+
+        public static string ColorNameError = "Aynı isimden sadece bir kez kayıt yapılabilir!";
+
+        public static string ImageNoLimit = "Bir arabanın sadece 5 adet resmi olabilir!";
+        public static string ImagesAdded = "Görsel yükleme işlemi başarılı!";
+        public static string UnsupportedFile = "Desteklenmeyen dosya türü!";
+        public static string AddedImage = "Görsel ekleme işlemi başarılı!";
+        public static string ErrorImage = "Eklenecek bir resim bulunamadı!";
+        public static string ImageNotFound = "Bir dosya gönderilmedi!";
+        public static string ImageDeleted = "Görsel silindi!";
     }
 }

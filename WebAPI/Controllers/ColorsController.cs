@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReCapProjectBusiness.Abstract;
-using ReCapProjectEntities.Concreate;
+using ReCapProjectEntities.Concrete;
 
 namespace WebAPI.Controllers
 {
@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class ColorsController : ControllerBase
     {
-        IColorService _colorService;
+        private readonly IColorService _colorService;
 
         public ColorsController(IColorService colorService)
         {

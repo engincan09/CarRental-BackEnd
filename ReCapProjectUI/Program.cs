@@ -1,7 +1,7 @@
-﻿using ReCapProjectBusiness.Concreate;
-using ReCapProjectDataAccsess.Concreate.EntityFramework;
+﻿using ReCapProjectBusiness.Concrete;
+using ReCapProjectDataAccsess.Concrete.EntityFramework;
 using ReCapProjectDataAccsess.Concreate.InMemory;
-using ReCapProjectEntities.Concreate;
+using ReCapProjectEntities.Concrete;
 using System;
 
 namespace ReCapProjectUI

@@ -1,7 +1,7 @@
 ﻿
 
 using ReCapProjectCore.DataAccess;
-using ReCapProjectEntities.Concreate;
+using ReCapProjectEntities.Concrete;
 using ReCapProjectEntities.DTOs;
 using System;
 using System.Collections.Generic;

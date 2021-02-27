@@ -11,9 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ReCapProjectBusiness.Abstract;
-using ReCapProjectBusiness.Concreate;
+using ReCapProjectBusiness.Concrete;
 using ReCapProjectDataAccsess.Abstract;
-using ReCapProjectDataAccsess.Concreate.EntityFramework;
+using ReCapProjectDataAccsess.Concrete.EntityFramework;
 
 namespace WebAPI
 {
@@ -43,6 +43,8 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseStaticFiles();
 
             app.UseAuthorization();
 

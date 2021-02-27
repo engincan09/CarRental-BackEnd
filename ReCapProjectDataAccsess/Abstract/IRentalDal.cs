@@ -1,5 +1,5 @@
 ﻿using ReCapProjectCore.DataAccess;
-using ReCapProjectEntities.Concreate;
+using ReCapProjectEntities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;

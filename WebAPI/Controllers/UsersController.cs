@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReCapProjectBusiness.Abstract;
-using ReCapProjectEntities.Concreate;
+using ReCapProjectEntities.Concrete;
 
 namespace WebAPI.Controllers
 {
@@ -13,7 +13,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        IUserService _userService;
+       private readonly IUserService _userService;
 
         public UsersController(IUserService userService)
         {
