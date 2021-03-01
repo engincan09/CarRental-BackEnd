@@ -1,9 +1,11 @@
 ﻿using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Castle.DynamicProxy;
+using Microsoft.AspNetCore.Http;
 using ReCapProjectBusiness.Abstract;
 using ReCapProjectBusiness.Concrete;
 using ReCapProjectCore.Utilities.Interceptors;
+using ReCapProjectCore.Utilities.Security.Jwt;
 using ReCapProjectDataAccsess.Abstract;
 using ReCapProjectDataAccsess.Concrete.EntityFramework;
 using System;
@@ -36,6 +38,14 @@ namespace ReCapProjectBusiness.DependencyResolvers.Autofac
 
             builder.RegisterType<CarImageManager>().As<ICarImageService>().SingleInstance();
             builder.RegisterType<EfCarImageDal>().As<ICarImageDal>().SingleInstance();
+
+            builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();
+            builder.RegisterType<EfUserDal>().As<IUserDal>().SingleInstance();
+
+            builder.RegisterType<AuthManager>().As<IAuthService>().SingleInstance();
+            builder.RegisterType<JwtHelper>().As<ITokenHelper>().SingleInstance();
+
+            builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>();
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

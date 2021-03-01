@@ -64,7 +64,7 @@ namespace ReCapProjectBusiness.Concrete
             var result = _color.GetAll(p=> p.Name == colorName).Any();
             if (result)
             {
-                return new ErrorResult(Messages.ColorNameError);
+                return new ErrorResult(Messages.NameError);
             }
             return new SuccessResult();
         }

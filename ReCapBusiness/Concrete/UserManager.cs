@@ -1,9 +1,9 @@
 ﻿using ReCapProjectBusiness.Abstract;
 using ReCapProjectBusiness.Constants;
+using ReCapProjectCore.Entities.Concrete;
 using ReCapProjectCore.Utilities.Results.Abstract;
 using ReCapProjectCore.Utilities.Results.Concrete;
 using ReCapProjectDataAccsess.Abstract;
-using ReCapProjectEntities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -39,6 +39,16 @@ namespace ReCapProjectBusiness.Concrete
         public IDataResult<List<User>> GetAll()
         {
             return new SuccessDataResult<List<User>>(_user.GetAll(), Messages.ListedMessage);
+        }
+
+        public IDataResult<User> GetByMail(string email)
+        {
+            return new SuccessDataResult<User>(_user.Get(u => u.Email == email));
+        }
+
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_user.GetClaims(user));
         }
 
         public IResult Update(User user)

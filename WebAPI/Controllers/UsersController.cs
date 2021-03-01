@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReCapProjectBusiness.Abstract;
+using ReCapProjectCore.Entities.Concrete;
 using ReCapProjectEntities.Concrete;
 
 namespace WebAPI.Controllers
