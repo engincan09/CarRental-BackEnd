@@ -124,11 +124,11 @@ namespace ReCapProjectBusiness.Concrete
             //Yüklenecek Olan Dizin
             var path = "\\Images\\";
             var currentDirectory = Path.Combine(Environment.CurrentDirectory, "wwwroot");
-            string ceateName = null;
+            string createName = null;
             string extension = null;
             if (image.Files != null && image.Files.Length > 0)
             {
-                ceateName = Guid.NewGuid().ToString("N")+carImage.CarId;
+                createName = Guid.NewGuid().ToString("N")+carImage.CarId;
                 extension = Path.GetExtension(image.Files.FileName);
                 //wwwroot içerisinde images klasörü yoksa oluştur
                 if (!Directory.Exists(currentDirectory + path))
@@ -140,11 +140,11 @@ namespace ReCapProjectBusiness.Concrete
                 {
                     return new ErrorResult(Messages.UnsupportedFile);
                 }
-                using (FileStream fileStream = File.Create(currentDirectory + path + ceateName + extension))
+                using (FileStream fileStream = File.Create(currentDirectory + path + createName + extension))
                 {
                     image.Files.CopyTo(fileStream);
                     fileStream.Flush();
-                    carImage.ImagePath = (path + ceateName + extension).Replace("\\", "/");
+                    carImage.ImagePath = (path + createName + extension).Replace("\\", "/");
                     carImage.UploadDate = DateTime.Now;
                 }
                 return new SuccessResult(Messages.ImagesAdded);
