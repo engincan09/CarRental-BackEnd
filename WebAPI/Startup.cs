@@ -14,6 +14,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using ReCapProjectBusiness.Abstract;
 using ReCapProjectBusiness.Concrete;
+using ReCapProjectCore.DependencyResolvers;
+using ReCapProjectCore.Utilities.Extensions;
 using ReCapProjectCore.Utilities.IoC;
 using ReCapProjectCore.Utilities.Security.Encryption;
 using ReCapProjectCore.Utilities.Security.Jwt;
@@ -51,7 +53,10 @@ namespace WebAPI
                         IssuerSigningKey = SecurityKeyHelper.CreateSecurityKey(tokenOptions.SecurityKey)
                     };
                 });
-            ServiceTool.Create(services);
+            services.AddDependencyResolvers(new ICoreModule[]
+            {
+                new CoreModule()
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using ReCapProjectBusiness.Abstract;
+using ReCapProjectBusiness.BusinessAspect.Autofac;
 using ReCapProjectBusiness.Constants;
 using ReCapProjectBusiness.ValidationRules.FluentValidation;
 using ReCapProjectCore.Aspects.Autofac.Validation;
@@ -27,6 +28,7 @@ namespace ReCapProjectBusiness.Concrete
         }
 
         [ValidationAspect(typeof(CarImageValidator))]
+        [SecuredOperation("admin,member")]
         public IResult Add(Image image, CarImage carImage)
         {
             //Fotoğraf sayısını kontrol et
@@ -44,7 +46,7 @@ namespace ReCapProjectBusiness.Concrete
             }
             return new ErrorResult(pathResult.Messages);
         }
-
+        [SecuredOperation("admin,member")]
         public IResult Delete(CarImage carImage)
         {
             var image = _carImageDal.Get(p => p.Id == carImage.Id);
@@ -85,7 +87,8 @@ namespace ReCapProjectBusiness.Concrete
 
             return new SuccessDataResult<List<CarImage>>(images);
         }
-
+        [ValidationAspect(typeof(CarImageValidator))]
+        [SecuredOperation("admin,member")]
         public IResult Update(Image image,CarImage carImage)
         {
             var findImages = _carImageDal.Get(p=> p.Id == carImage.Id);

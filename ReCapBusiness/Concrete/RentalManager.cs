@@ -1,4 +1,5 @@
 ﻿using ReCapProjectBusiness.Abstract;
+using ReCapProjectBusiness.BusinessAspect.Autofac;
 using ReCapProjectBusiness.Constants;
 using ReCapProjectBusiness.ValidationRules.FluentValidation;
 using ReCapProjectCore.Aspects.Autofac.Validation;
@@ -23,6 +24,7 @@ namespace ReCapProjectBusiness.Concrete
         }
 
         [ValidationAspect(typeof(RentalValidator))]
+        [SecuredOperation("admin")]
         public IResult Add(Rental rental)
         {
             var result = BusinessRules.Run(CheckRental(rental.CarId));
@@ -33,7 +35,7 @@ namespace ReCapProjectBusiness.Concrete
             _rental.Add(rental);
             return new SuccessResult(Messages.Rental);
         }
-
+        [SecuredOperation("admin")]
         public IResult Delete(Rental rental)
         {
             _rental.Delete(rental);
@@ -49,7 +51,7 @@ namespace ReCapProjectBusiness.Concrete
         {
             return new SuccessDataResult<List<Rental>>(_rental.GetAll());
         }
-
+        [SecuredOperation("admin")]
         public IResult Update(Rental rental)
         {
             _rental.Update(rental);

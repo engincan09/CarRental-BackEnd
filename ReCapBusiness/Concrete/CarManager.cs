@@ -1,5 +1,6 @@
 ﻿using ReCapProjectBusiness.Abstract;
 using ReCapProjectBusiness.Constants;
+using ReCapProjectCore.Aspects.Autofac.Caching;
 using ReCapProjectCore.Utilities.Results.Abstract;
 using ReCapProjectCore.Utilities.Results.Concrete;
 using ReCapProjectDataAccsess.Abstract;
@@ -18,19 +19,20 @@ namespace ReCapProjectBusiness.Concrete
         {
             _car = car;
         }
-
+        [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Car car)
         {
             _car.Add(car);
             return new SuccessResult(Messages.AddedMessage);
         }
-
+        [CacheRemoveAspect("IProductService.Get")]
         public IResult Delete(Car car)
         {
             _car.Delete(car);
             return new SuccessResult(Messages.DeletedMessage);
         }
 
+        [CacheAspect]
         public IDataResult<List<Car>> GetAll()
         {
             return new SuccessDataResult<List<Car>>(_car.GetAll(), Messages.ListedMessage);
@@ -68,7 +70,7 @@ namespace ReCapProjectBusiness.Concrete
                 return new ErrorDataResult<List<CarDetailDto>>(Messages.ListedErrorMessage);
             }
         }
-
+        [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
             _car.Update(car);

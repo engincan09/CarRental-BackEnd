@@ -1,5 +1,8 @@
 ﻿using ReCapProjectBusiness.Abstract;
+using ReCapProjectBusiness.BusinessAspect.Autofac;
 using ReCapProjectBusiness.Constants;
+using ReCapProjectBusiness.ValidationRules.FluentValidation;
+using ReCapProjectCore.Aspects.Autofac.Validation;
 using ReCapProjectCore.Entities.Concrete;
 using ReCapProjectCore.Utilities.Results.Abstract;
 using ReCapProjectCore.Utilities.Results.Concrete;
@@ -18,13 +21,15 @@ namespace ReCapProjectBusiness.Concrete
         {
             _user = user;
         }
-
+        [SecuredOperation("admin")]
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
             _user.Add(user);
             return new SuccessResult(Messages.AddedMessage);
         }
-
+        [SecuredOperation("admin")]
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Delete(User user)
         {
             _user.Delete(user);
@@ -50,7 +55,8 @@ namespace ReCapProjectBusiness.Concrete
         {
             return new SuccessDataResult<List<OperationClaim>>(_user.GetClaims(user));
         }
-
+        [SecuredOperation("admin")]
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Update(User user)
         {
             _user.Update(user);
