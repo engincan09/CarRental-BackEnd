@@ -21,14 +21,14 @@ namespace ReCapProjectBusiness.Concrete
         {
             _user = user;
         }
-        [SecuredOperation("admin")]
+        
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
             _user.Add(user);
             return new SuccessResult(Messages.AddedMessage);
         }
-        [SecuredOperation("admin")]
+       
         [ValidationAspect(typeof(UserValidator))]
         public IResult Delete(User user)
         {
@@ -55,7 +55,7 @@ namespace ReCapProjectBusiness.Concrete
         {
             return new SuccessDataResult<List<OperationClaim>>(_user.GetClaims(user));
         }
-        [SecuredOperation("admin")]
+        
         [ValidationAspect(typeof(UserValidator))]
         public IResult Update(User user)
         {
