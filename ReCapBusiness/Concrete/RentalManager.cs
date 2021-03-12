@@ -8,6 +8,7 @@ using ReCapProjectCore.Utilities.Results.Abstract;
 using ReCapProjectCore.Utilities.Results.Concrete;
 using ReCapProjectDataAccsess.Abstract;
 using ReCapProjectEntities.Concrete;
+using ReCapProjectEntities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -51,6 +52,12 @@ namespace ReCapProjectBusiness.Concrete
         {
             return new SuccessDataResult<List<Rental>>(_rental.GetAll());
         }
+
+        public IDataResult<List<CarRentalDto>> GetRentalDetails()
+        {
+            return new SuccessDataResult<List<CarRentalDto>>(_rental.GetRentalDetails());
+        }
+
         [SecuredOperation("admin")]
         public IResult Update(Rental rental)
         {

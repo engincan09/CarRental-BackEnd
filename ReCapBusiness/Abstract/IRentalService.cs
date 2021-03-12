@@ -1,5 +1,6 @@
 ﻿using ReCapProjectCore.Utilities.Results.Abstract;
 using ReCapProjectEntities.Concrete;
+using ReCapProjectEntities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,6 @@ namespace ReCapProjectBusiness.Abstract
         IResult Update(Rental rental);
         IDataResult<Rental> Get(int rentalId);
         IDataResult<List<Rental>> GetAll();
+        IDataResult<List<CarRentalDto>> GetRentalDetails();
     }
 }

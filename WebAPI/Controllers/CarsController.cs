@@ -24,10 +24,10 @@ namespace WebAPI.Controllers
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
-            var result = _carService.GetAll();
+            var result = _carService.GetCarDetail();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result.Messages);
         }

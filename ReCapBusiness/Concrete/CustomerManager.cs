@@ -8,6 +8,7 @@ using ReCapProjectCore.Utilities.Results.Abstract;
 using ReCapProjectCore.Utilities.Results.Concrete;
 using ReCapProjectDataAccsess.Abstract;
 using ReCapProjectEntities.Concrete;
+using ReCapProjectEntities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,6 +49,12 @@ namespace ReCapProjectBusiness.Concrete
         {
             return new SuccessDataResult<List<Customer>>(_customer.GetAll(), Messages.ListedMessage);
         }
+
+        public IDataResult<List<CustomerDetailDto>> GetCustomerDetailDto()
+        {
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customer.GetCustomerDetails(), Messages.ListedMessage);
+        }
+
         [CacheRemoveAspect("ICustomerService.Get")]
         [ValidationAspect(typeof(CustomerValidator))]
         [SecuredOperation("admin")]
@@ -56,5 +63,7 @@ namespace ReCapProjectBusiness.Concrete
             _customer.Update(customer);
             return new SuccessResult(Messages.UpdatedMessage);
         }
+
+    
     }
 }
