@@ -1,6 +1,5 @@
 ﻿using ReCapProjectBusiness.Concrete;
 using ReCapProjectDataAccsess.Concrete.EntityFramework;
-using ReCapProjectDataAccsess.Concreate.InMemory;
 using ReCapProjectEntities.Concrete;
 using System;
 

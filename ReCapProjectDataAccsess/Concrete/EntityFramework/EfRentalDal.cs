@@ -20,7 +20,7 @@ namespace ReCapProjectDataAccsess.Concrete.EntityFramework
                              join cu in context.Customers on r.CustomerId equals cu.Id
                              join b in context.Brands on c.BrandId equals b.Id
                              join u in context.Users on cu.UserId equals u.Id
-                             select new CarRentalDto {RentalId=r.Id,CarName = b.Name,CustomerLastName=u.LastName,CustomerFirstName = u.FirstName,RentDate=r.RentDate,ReturnDate=r.ReturnDate};
+                             select new CarRentalDto {RentalId=r.Id,CarName = b.Name,CustomerLastName=u.LastName,CustomerFirstName = u.FirstName,RentDate=r.RentDate,ReturnDate=r.ReturnDate,Car=b.Name};
                 return result.ToList();
                              
             }

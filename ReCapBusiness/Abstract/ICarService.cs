@@ -14,10 +14,11 @@ namespace ReCapProjectBusiness.Abstract
         IResult Update(Car car);
         IResult Delete(Car car);
         IDataResult<List<Car>> GetAll();
-        IDataResult<List<Car>> GetByBrandCar(int brandId);
-        IDataResult<List<Car>> GetByColorCar(int colorId);
+        IDataResult<List<CarDetailDto>> GetByBrandCar(int brandId);
+        IDataResult<List<CarDetailDto>> GetByColorCar(int colorId);
         IDataResult<List<Car>> GetByDesc(string desc);
-        IDataResult<List<CarDetailDto>> GetCarDetail();
+        IDataResult<List<CarDetailDto>> GetCarsDetail();
+        IDataResult<CarDetailAndImageDto> GetCarDetailAndImage(int carId);
         IDataResult<Car> GetCar(int id);
         
     }

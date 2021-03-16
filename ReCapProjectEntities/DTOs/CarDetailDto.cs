@@ -12,6 +12,7 @@ namespace ReCapProjectEntities.DTOs
         public string ColorName { get; set; }
         public string BrandName { get; set; }
         public decimal DailyPrice { get; set; }
+        public List<string> ImagePaths { get; set; }
         public int ModelYear { get; set; }
         
 

@@ -14,10 +14,14 @@ namespace ReCapProjectBusiness.Concrete
 {
     public class CarManager : ICarService
     {
-       private readonly ICarDal _car;
-        public CarManager(ICarDal car)
+        private readonly ICarDal _car;
+        private readonly ICarImageService _carImage;
+
+     
+        public CarManager(ICarDal car, ICarImageService carImage)
         {
             _car = car;
+            _carImage = carImage;
         }
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Car car)
@@ -38,15 +42,16 @@ namespace ReCapProjectBusiness.Concrete
             return new SuccessDataResult<List<Car>>(_car.GetAll(), Messages.ListedMessage);
         }
 
-        public IDataResult<List<Car>> GetByBrandCar(int brandId)
+        public IDataResult<List<CarDetailDto>> GetByBrandCar(int brandId)
         {
-            return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.BrandId == brandId), Messages.ListedMessage);
+            var carDetails = _car.GetCarsDetail(m => m.BrandId == brandId);
+            return new SuccessDataResult<List<CarDetailDto>>(carDetails, Messages.ListedMessage);
         }
 
-        public IDataResult<List<Car>> GetByColorCar(int colorId)
+        public IDataResult<List<CarDetailDto>> GetByColorCar(int colorId)
         {
-
-            return new SuccessDataResult<List<Car>>(_car.GetAll(p => p.ColorId == colorId), Messages.ListedMessage);
+            var carDetails = _car.GetCarsDetail(m=> m.ColorId == colorId);
+            return new SuccessDataResult<List<CarDetailDto>>(carDetails, Messages.ListedMessage);
         }
 
         public IDataResult<List<Car>> GetByDesc(string desc)
@@ -59,17 +64,29 @@ namespace ReCapProjectBusiness.Concrete
             return new SuccessDataResult<Car>(_car.Get(p => p.Id == id));
         }
 
-        public IDataResult<List<CarDetailDto>> GetCarDetail()
+        public IDataResult<CarDetailAndImageDto> GetCarDetailAndImage(int carId)
         {
-            try
+            var result = _car.GetCarDetail(carId);
+            var image = _carImage.GetAllByCarId(carId);
+            if (result == null || image.Success == false)
             {
-                return new SuccessDataResult<List<CarDetailDto>>(_car.GetCarDetail());
+                return new ErrorDataResult<CarDetailAndImageDto>();
             }
-            catch (Exception)
+            var carDetailAndImageDto = new CarDetailAndImageDto()
             {
-                return new ErrorDataResult<List<CarDetailDto>>(Messages.ListedErrorMessage);
-            }
+                Car = result,
+                Images = image.Data
+            };
+            return new SuccessDataResult<CarDetailAndImageDto>(carDetailAndImageDto);
         }
+
+        public IDataResult<List<CarDetailDto>> GetCarsDetail()
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_car.GetCarsDetail());
+        }
+
+
+
         [CacheRemoveAspect("ICarService.Get")]
         public IResult Update(Car car)
         {
