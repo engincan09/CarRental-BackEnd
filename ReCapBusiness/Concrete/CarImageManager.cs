@@ -28,7 +28,7 @@ namespace ReCapProjectBusiness.Concrete
         }
 
         [ValidationAspect(typeof(CarImageValidator))]
-        [SecuredOperation("admin,member")]
+        //[SecuredOperation("admin,member")]
         public IResult Add(Image image, CarImage carImage)
         {
             //Fotoğraf sayısını kontrol et
@@ -83,7 +83,7 @@ namespace ReCapProjectBusiness.Concrete
             }
 
             List<CarImage> images = new List<CarImage>();
-            images.Add(new CarImage() { CarId = 0,Id = 0, UploadDate = DateTime.Now, ImagePath = "/Images/defaultLogo.png" });
+            images.Add(new CarImage() { CarId = 0,Id = 0, UploadDate = DateTime.Now, ImagePath = @"\Images\defaultLogo.jpg" });
 
             return new SuccessDataResult<List<CarImage>>(images);
         }

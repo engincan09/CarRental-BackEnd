@@ -16,6 +16,7 @@ namespace ReCapProjectBusiness.Abstract
         IDataResult<List<Car>> GetAll();
         IDataResult<List<CarDetailDto>> GetByBrandCar(int brandId);
         IDataResult<List<CarDetailDto>> GetByColorCar(int colorId);
+        IDataResult<List<CarDetailDto>> GetByBrandAndColor(int brandId,int colorId);
         IDataResult<List<Car>> GetByDesc(string desc);
         IDataResult<List<CarDetailDto>> GetCarsDetail();
         IDataResult<CarDetailAndImageDto> GetCarDetailAndImage(int carId);

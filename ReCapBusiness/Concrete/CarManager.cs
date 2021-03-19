@@ -42,6 +42,11 @@ namespace ReCapProjectBusiness.Concrete
             return new SuccessDataResult<List<Car>>(_car.GetAll(), Messages.ListedMessage);
         }
 
+        public IDataResult<List<CarDetailDto>> GetByBrandAndColor(int brandId, int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_car.GetCarsDetail(m=> m.BrandId == brandId  && m.ColorId == colorId));
+        }
+
         public IDataResult<List<CarDetailDto>> GetByBrandCar(int brandId)
         {
             var carDetails = _car.GetCarsDetail(m => m.BrandId == brandId);
