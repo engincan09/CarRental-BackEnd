@@ -44,5 +44,7 @@ namespace ReCapProjectBusiness.Constants
         public static string PasswordError = "Kullanıcı adı veya parola hatalı!";
         public static string SuccessfulLogin = "Başarılı bir şekilde giriş yapıldı!";
         public static string AuthorizationDenied = "Yetkiniz bulunmamakta!";
+        public static string InsufficientBalance = "Yetersiz Bakiye!";
+        public static string PaymentCompleted = "Ödeme Başarılı!";
     }
 }

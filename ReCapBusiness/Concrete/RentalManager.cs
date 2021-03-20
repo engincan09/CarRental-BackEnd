@@ -25,7 +25,7 @@ namespace ReCapProjectBusiness.Concrete
         }
 
         [ValidationAspect(typeof(RentalValidator))]
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         public IResult Add(Rental rental)
         {
             var result = BusinessRules.Run(CheckRental(rental.CarId));

@@ -29,7 +29,9 @@ namespace ReCapProjectDataAccsess.Concrete.EntityFramework
                                  ColorName = clr.Name,
                                  DailyPrice = c.DailyPrice,
                                  Description = c.Description,
-                                 ModelYear = c.ModelYear
+                                 ModelYear = c.ModelYear,
+                                 Status = c.Status
+                                 
                              };
 
                 return result.FirstOrDefault();
