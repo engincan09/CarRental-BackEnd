@@ -34,6 +34,16 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result.Messages);
         }
+        [HttpGet("getlist")]
+        public IActionResult GetList()
+        {
+            var result = _rentalService.GetRentalDetails();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result.Messages);
+        }
 
         //By ıd rental
         [HttpGet("getbyid")]
