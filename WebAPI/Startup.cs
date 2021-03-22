@@ -15,7 +15,7 @@ using Microsoft.IdentityModel.Tokens;
 using ReCapProjectBusiness.Abstract;
 using ReCapProjectBusiness.Concrete;
 using ReCapProjectCore.DependencyResolvers;
-using ReCapProjectCore.Utilities.Extensions;
+using ReCapProjectCore.Extensions;
 using ReCapProjectCore.Utilities.IoC;
 using ReCapProjectCore.Utilities.Security.Encryption;
 using ReCapProjectCore.Utilities.Security.Jwt;

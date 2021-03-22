@@ -4,7 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
-namespace ReCapProjectCore.Utilities.Extensions
+namespace ReCapProjectCore.Extensions
 {
     public static class ClaimsPrincipalExtensions
     {

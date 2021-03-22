@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ReCapProjectCore.Entities.Concrete;
-using ReCapProjectCore.Utilities.Extensions;
+using ReCapProjectCore.Extensions;
 using ReCapProjectCore.Utilities.Security.Encryption;
 using System;
 using System.Collections.Generic;

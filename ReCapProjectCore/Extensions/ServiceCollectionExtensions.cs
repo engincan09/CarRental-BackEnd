@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ReCapProjectCore.Utilities.Extensions
+namespace ReCapProjectCore.Extensions
 {
     public static class ServiceCollectionExtensions
     {

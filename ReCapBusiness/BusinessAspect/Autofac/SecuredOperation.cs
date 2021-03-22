@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
-using ReCapProjectCore.Utilities.Extensions;
+using ReCapProjectCore.Extensions;
 
 namespace ReCapProjectBusiness.BusinessAspect.Autofac
 {
