@@ -1,11 +1,12 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
+
 
 namespace ReCapProjectCore.Extensions
 {
@@ -26,13 +27,12 @@ namespace ReCapProjectCore.Extensions
             catch (Exception e)
             {
                 await HandleExceptionAsync(httpContext, e);
-                throw;
             }
         }
 
         private Task HandleExceptionAsync(HttpContext httpContext, Exception e)
         {
-            httpContext.Response.ContentType = "appliaction/json";
+            httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             string message ="Internal Server Error";
             IEnumerable<ValidationFailure> errors;

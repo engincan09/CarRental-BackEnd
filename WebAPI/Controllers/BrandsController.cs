@@ -29,19 +29,19 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
 
         //Brand by id
         [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(int brandId)
         {
-            var result = _brandService.GetBrand(id);
+            var result = _brandService.GetBrand(brandId);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
 
         //Add brand
@@ -51,9 +51,9 @@ namespace WebAPI.Controllers
             var result = _brandService.Add(brand);
             if (result.Success)
             {
-                return Ok(result.Messages);
+                return Ok(result);
             }
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
 
         //Delete brand
@@ -63,9 +63,9 @@ namespace WebAPI.Controllers
             var result = _brandService.Delete(brand);
             if (result.Success)
             {
-                return Ok(result.Messages);
+                return Ok(result);
             }
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
 
         //Update brand
@@ -75,9 +75,9 @@ namespace WebAPI.Controllers
             var result = _brandService.Update(brand);
             if (result.Success)
             {
-                return Ok(result.Messages);
+                return Ok(result);
             }
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
     }
 }

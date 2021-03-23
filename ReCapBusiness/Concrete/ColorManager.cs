@@ -57,7 +57,7 @@ namespace ReCapProjectBusiness.Concrete
         }
         [CacheRemoveAspect("IColorService.Get")]
         [ValidationAspect(typeof(ColorValidator))]
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         public IResult Update(Color color)
         {
             var result = BusinessRules.Run(CheckColorName(color.Name));

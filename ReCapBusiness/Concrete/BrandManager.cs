@@ -50,7 +50,7 @@ namespace ReCapProjectBusiness.Concrete
             return new SuccessDataResult<Brand>(_brand.Get(m => m.Id == id));
         }
         [ValidationAspect(typeof(BrandValidator))]
-        [SecuredOperation("admin")]
+        //[SecuredOperation("admin")]
         [CacheRemoveAspect("IBrandService.Get")]
         public IResult Update(Brand brand)
         {

@@ -11,6 +11,10 @@ namespace ReCapProjectBusiness.ValidationRules.FluentValidation
         public BrandValidator()
         {
             RuleFor(p=> p.Name).NotEmpty();
+           
+            
         }
+      
+
     }
 }

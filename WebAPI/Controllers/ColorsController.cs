@@ -34,14 +34,14 @@ namespace WebAPI.Controllers
 
         //Color by id
         [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(int colorId)
         {
-            var result = _colorService.GetColor(id);
+            var result = _colorService.GetColor(colorId);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
 
         //Add
