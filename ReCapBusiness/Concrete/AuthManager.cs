@@ -58,7 +58,7 @@ namespace ReCapProjectBusiness.Concrete
         {
             var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims.Data);
-            return new SuccessDataResult<AccessToken>(accessToken, Messages.AccessTokenCreated);
+            return new SuccessDataResult<AccessToken>(accessToken, Messages.SuccessfulLogin);
         }
 
         public IResult UserExists(string email)

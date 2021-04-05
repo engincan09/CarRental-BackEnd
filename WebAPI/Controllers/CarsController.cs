@@ -55,14 +55,14 @@ namespace WebAPI.Controllers
 
         //Car by ID
         [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
+        public IActionResult GetById(int carId)
         {
-            var result = _carService.GetCar(id);
+            var result = _carService.GetCar(carId);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
 
         //Car by Color

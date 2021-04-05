@@ -14,6 +14,7 @@ namespace ReCapProjectEntities.DTOs
         public decimal DailyPrice { get; set; }
         public List<string> ImagePaths { get; set; }
         public int ModelYear { get; set; }
+        public int  FindeksPoint { get; set; }
         public bool Status { get; set; }
 
 

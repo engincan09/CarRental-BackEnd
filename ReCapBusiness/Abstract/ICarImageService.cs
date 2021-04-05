@@ -9,7 +9,7 @@ namespace ReCapProjectBusiness.Abstract
 {
     public interface ICarImageService
     {
-        IResult Add(Image image, CarImage carImage);
+        IResult Add(IFormFile formFile, CarImage carImage);
         IResult Delete(CarImage carImage);
         IResult Update(Image image, CarImage carImage);
         IDataResult<List<CarImage>> GetAll();

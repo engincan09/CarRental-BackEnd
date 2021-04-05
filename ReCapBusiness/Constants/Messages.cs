@@ -38,11 +38,11 @@ namespace ReCapProjectBusiness.Constants
 
         //Login işlemleri
         public static string UserRegistired = "Kullanıcı başarıyla oluşturuldu!";
-        public static string UserAlreadyExists = "Böyle bir kullanıcı zaten mevcut!";
-        public static string AccessTokenCreated = "Token oluşturuldu!";
+        public static string UserAlreadyExists = "Bu Mail Adresi ile bir kullanıcı zaten mevcut!";
+        public static string AccessTokenCreated = "Kullanıcı başarıyla oluşturuldu!";
         public static string UserNotFound = "Böyle bir kullanıcı bulunamadı!";
         public static string PasswordError = "Kullanıcı adı veya parola hatalı!";
-        public static string SuccessfulLogin = "Başarılı bir şekilde giriş yapıldı!";
+        public static string SuccessfulLogin = "Başarılı bir şekilde giriş yapıldı! Anasayfaya Yönlendiriliyorsunuz.";
         public static string AuthorizationDenied = "Yetkiniz bulunmamakta!";
         public static string InsufficientBalance = "Yetersiz Bakiye!";
         public static string PaymentCompleted = "Ödeme Başarılı!";

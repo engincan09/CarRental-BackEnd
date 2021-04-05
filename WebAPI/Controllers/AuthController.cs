@@ -34,9 +34,9 @@ namespace WebAPI.Controllers
             var result = _authService.CreateAccessToken(userToLogin.Data);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
-            return BadRequest(new ErrorResult(result.Messages));
+            return BadRequest(result);
 
         }
 
@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
             var userExist = _authService.UserExists(userForRegisterDto.Email);
             if (!userExist.Success)
             {
-                return BadRequest(userExist.Messages);
+                return BadRequest(userExist);
             }
 
             var registerResult = _authService.Register(userForRegisterDto,userForRegisterDto.Password);
@@ -56,7 +56,7 @@ namespace WebAPI.Controllers
                 return Ok(result);
             }
 
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
     }
 }

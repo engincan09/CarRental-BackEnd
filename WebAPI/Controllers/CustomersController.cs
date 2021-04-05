@@ -32,16 +32,16 @@ namespace WebAPI.Controllers
             return BadRequest(result.Messages);
         }
 
-        //Color by customer
-        [HttpGet("getbyid")]
-        public IActionResult GetById(int id)
+        //Get customer by user id
+        [HttpGet("getcustomerbyuserid")]
+        public IActionResult GetById(int userId)
         {
-            var result = _customerService.Get(id);          
+            var result = _customerService.Get(userId);          
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
 
         //Add customer

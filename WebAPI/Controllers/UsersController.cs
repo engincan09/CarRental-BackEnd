@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using ReCapProjectBusiness.Abstract;
 using ReCapProjectCore.Entities.Concrete;
 using ReCapProjectEntities.Concrete;
+using ReCapProjectEntities.DTOs;
 
 namespace WebAPI.Controllers
 {
@@ -14,7 +15,7 @@ namespace WebAPI.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-       private readonly IUserService _userService;
+        private readonly IUserService _userService;
 
         public UsersController(IUserService userService)
         {
@@ -44,7 +45,7 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result.Messages);
         }
-
+      
         //Add
         [HttpGet("add")]
         public IActionResult Add(User user)
@@ -70,15 +71,53 @@ namespace WebAPI.Controllers
         }
 
         //Update
-        [HttpGet("update")]
-        public IActionResult Update(User user)
+        [HttpPost("update")]
+        public IActionResult Update(UserForUpdateDto userForUpdate)
         {
-            var result = _userService.Update(user);
+            var result = _userService.Update(userForUpdate.User,userForUpdate.Password);
             if (result.Success)
             {
-                return Ok(result.Messages);
+                return Ok(result);
             }
-            return BadRequest(result.Messages);
+            return BadRequest(result);
         }
+
+        //Get Claim
+        [HttpGet("getclaim")]
+        public IActionResult GetClaim(User user)
+        {
+            var result = _userService.GetClaims(user);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+
+        //Get User  
+        [HttpGet("getuser")]
+        public IActionResult GetUser(string email) 
+        {
+            var result = _userService.GetUserAndClaim(email);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+        //Get By Email
+        [HttpGet("getbyemail")]
+        public IActionResult GetByMail(string email)
+        {
+            var result = _userService.GetByMail(email);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
     }
 }

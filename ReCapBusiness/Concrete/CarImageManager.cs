@@ -5,7 +5,7 @@ using ReCapProjectBusiness.Constants;
 using ReCapProjectBusiness.ValidationRules.FluentValidation;
 using ReCapProjectCore.Aspects.Autofac.Validation;
 using ReCapProjectCore.Utilities.Business;
-
+using ReCapProjectCore.Utilities.FileHelper;
 using ReCapProjectCore.Utilities.Results.Abstract;
 using ReCapProjectCore.Utilities.Results.Concrete;
 
@@ -29,7 +29,7 @@ namespace ReCapProjectBusiness.Concrete
 
         [ValidationAspect(typeof(CarImageValidator))]
         //[SecuredOperation("admin,member")]
-        public IResult Add(Image image, CarImage carImage)
+        public IResult Add(IFormFile formFile, CarImage carImage)
         {
             //Fotoğraf sayısını kontrol et
             var countResult = BusinessRules.Run(CheckImageLimit(carImage.CarId));
@@ -38,13 +38,10 @@ namespace ReCapProjectBusiness.Concrete
                 return countResult;
             }
             //Resmi dosyaya ekle ardından yolunu veritabanına ekle
-            var pathResult = CreatePath(image, carImage);
-            if (pathResult.Success)
-            {
-                _carImageDal.Add(carImage);
-                return new SuccessResult(pathResult.Messages);
-            }
-            return new ErrorResult(pathResult.Messages);
+            carImage.ImagePath = FileHelper.AddAsync(formFile);
+            carImage.UploadDate = DateTime.Now;
+            _carImageDal.Add(carImage);
+            return new SuccessResult(Messages.ImagesAdded);
         }
         [SecuredOperation("admin,member")]
         public IResult Delete(CarImage carImage)

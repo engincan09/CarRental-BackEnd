@@ -38,7 +38,10 @@ namespace ReCapProjectCore.Utilities.Security.Jwt
             return new AccessToken
             {
                 Token = token,
-                Expiration = _accessTokenExpiration
+                Expiration = _accessTokenExpiration,
+                UserId = user.Id
+
+                        
             };
         }
 

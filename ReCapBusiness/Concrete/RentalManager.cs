@@ -17,7 +17,8 @@ namespace ReCapProjectBusiness.Concrete
 {
     public class RentalManager : IRentalService
     {
-       private readonly IRentalDal _rental;
+        private readonly IRentalDal _rental;
+
 
         public RentalManager(IRentalDal rental)
         {
@@ -77,5 +78,6 @@ namespace ReCapProjectBusiness.Concrete
             }
             return new SuccessResult();
         }
+
     }
 }

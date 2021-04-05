@@ -30,6 +30,7 @@ namespace ReCapProjectDataAccsess.Concrete.EntityFramework
                                  DailyPrice = c.DailyPrice,
                                  Description = c.Description,
                                  ModelYear = c.ModelYear,
+                                 FindeksPoint = c.FindeksPoint,
                                  Status = c.Status
                                  
                              };
@@ -52,7 +53,8 @@ namespace ReCapProjectDataAccsess.Concrete.EntityFramework
                                  BrandName = b.Name, 
                                  ColorName = clr.Name, 
                                  DailyPrice = c.DailyPrice, 
-                                 Description = c.Description, 
+                                 Description = c.Description,
+                                 FindeksPoint = c.FindeksPoint,
                                  ModelYear = c.ModelYear};
 
                 return result.ToList();

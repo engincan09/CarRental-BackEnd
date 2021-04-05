@@ -40,9 +40,9 @@ namespace ReCapProjectBusiness.Concrete
             return new SuccessResult(Messages.DeletedMessage);
         }
         [CacheAspect]
-        public IDataResult<Customer> Get(int customerId)
+        public IDataResult<Customer> Get(int userId)
         {
-            return new SuccessDataResult<Customer>(_customer.Get(m => m.Id == customerId));
+            return new SuccessDataResult<Customer>(_customer.Get(m => m.UserId == userId));
         }
         [CacheAspect]
         public IDataResult<List<Customer>> GetAll()
@@ -57,7 +57,6 @@ namespace ReCapProjectBusiness.Concrete
 
         [CacheRemoveAspect("ICustomerService.Get")]
         [ValidationAspect(typeof(CustomerValidator))]
-        [SecuredOperation("admin")]
         public IResult Update(Customer customer)
         {
             _customer.Update(customer);

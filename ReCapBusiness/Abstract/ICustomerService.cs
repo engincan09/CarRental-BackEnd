@@ -13,7 +13,7 @@ namespace ReCapProjectBusiness.Abstract
         IResult Delete(Customer customer);
         IResult Update(Customer customer);
         IDataResult<List<Customer>> GetAll();
-        IDataResult<Customer> Get(int customerId);
+        IDataResult<Customer> Get(int userId);
         IDataResult<List<CustomerDetailDto>> GetCustomerDetailDto();
 
     }

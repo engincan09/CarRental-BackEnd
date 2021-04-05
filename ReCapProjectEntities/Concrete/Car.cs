@@ -14,6 +14,7 @@ namespace ReCapProjectEntities.Concrete
         public decimal DailyPrice { get; set; }
         public int ModelYear { get; set; }
         public string Description { get; set; }
+        public int FindeksPoint { get; set; }
         public bool Status { get; set; }
     }
 }
