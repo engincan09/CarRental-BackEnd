@@ -57,6 +57,16 @@ namespace WebAPI
             {
                 new CoreModule()
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("ApiCorsPolicy",
+                    p => p.WithOrigins(Configuration.GetSection("Host:AllowedOrigins").Get<string[]>()).
+                    AllowAnyMethod().
+                    AllowAnyHeader().
+                    AllowCredentials());
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
